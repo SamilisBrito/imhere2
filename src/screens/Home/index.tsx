@@ -10,33 +10,37 @@ import { useState } from "react";
 import { styles } from "./styles";
 import { Participant } from "../../components/Participant";
 
-
-
 export default function Home() {
   const [participants, setParticipants] = useState<string[]>([]);
   const [participantName, setParticipantName] = useState("");
 
-
-
   function aoPrecionar() {
-    if (participantName === '') {
-      return Alert.alert("Sem nome do participante", "Necessário adicionar o nome do participante");
+    if (participantName === "") {
+      return Alert.alert(
+        "Sem nome do participante",
+        "Necessário adicionar o nome do participante"
+      );
     }
-    
+
     if (participants.includes(participantName)) {
-      return Alert.alert("Participante existente", "Esse participante já existe no sistema");
+      return Alert.alert(
+        "Participante existente",
+        "Esse participante já existe no sistema"
+      );
     }
 
     setParticipants((prevState) => [...prevState, participantName]);
-    setParticipantName('')
+    setParticipantName("");
   }
 
   function removeParticipante(name: string) {
-   
     Alert.alert("Remover", `Deseja remover o participante ${name}?`, [
       {
         text: "Sim",
-        onPress: () => setParticipants(prevState => prevState.filter(participant => participant !== name)),
+        onPress: () =>
+          setParticipants((prevState) =>
+            prevState.filter((participant) => participant !== name)
+          ),
       },
       {
         text: "Não",
@@ -48,7 +52,7 @@ export default function Home() {
   return (
     <View style={styles.conteiner}>
       {/* textos */}
-      <Text style={styles.titulo}>Nome do evento</Text>
+      <Text style={styles.titulo}>Evento X - Tecnologia</Text>
       <Text style={styles.subtitulo}>Terça, 5 de Setembro de 2023</Text>
       <View style={styles.dataEvento}>
         {/* input */}
